@@ -1,0 +1,277 @@
+* {
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+    font-family: 'Varela Round', sans-serif;
+}
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+}
+
+.btn {
+    font-size: 30px;
+}
+
+.hidden {
+    font-size: 0;
+}
+
+aside {
+    width: 17%;
+    min-width: 150px;
+    background: rgb(8, 23, 71);
+    color: #fff;
+
+    h2 {
+        font-family: 'Fascinate Inline', cursive;
+        font-size: 36px;
+        text-align: center;
+        padding: 20px 0;
+
+        i {
+            color: rgb(192, 205, 240);
+            padding-right: 10px;
+        }
+    }
+
+    p {
+        font-size: 22px;
+        padding: 10px 0 0 8%;
+
+        i {
+            color: rgb(192, 205, 240);
+            padding-right: 10px;
+        }
+    }
+}
+
+main {
+    width: 100%;
+    background: rgb(245, 245, 245);
+    overflow: auto;
+
+    .header {
+        height: 104px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #fff;
+        padding: 0 50px;
+    }
+
+    .title_section {
+        font-size: 22px;
+        margin: 20px 50px;
+    }
+
+    .header_btn_wrapper {
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+    }
+
+    .sort_priority_task {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .sort_date_task {
+        margin: 0 25px;
+    }
+
+    .add_new_task {
+        color: #fff;
+        padding: 10px 50px;
+        border-radius: 35px;
+        background: rgb(111, 141, 224);
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .add_task_form {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transform: scale(0);
+        height: 100vh;
+        width: 100vw;
+        background: rgba(29, 29, 29, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .add_task_form_wrapper {
+        font-size: 20px;
+        text-align: center;
+        width: 600px;
+        height: 450px;
+        padding-top: 20px;
+        background: #fff;
+        border: 1px solid gray;
+
+        input[type="text"] {
+            font-size: 16px;
+            padding: 10px;
+            width: 250px;
+            height: 30px;
+            margin: 10px 0;
+        }
+
+        textarea {
+            font-size: 16px;
+            padding: 10px;
+            width: 250px;
+            height: 150px;
+            margin: 10px 0;
+            resize: none;
+        }
+
+        .button {
+            font-size: 18px;
+            line-height: 30px;
+            margin: 15px auto 0;
+            width: 100px;
+            height: 30px;
+            background: rgb(226, 226, 226);
+        }
+
+        #add_task_btn {
+
+        }
+
+        #rewrite_task_btn {
+            margin-top: -20px;
+            transform: scale(0);
+        }
+
+        button {
+            font-family: 'Varela Round', sans-serif;
+            font-size: 16px;
+            line-height: 30px;
+            height: 30px;
+            width: 100px;
+            background: rgb(226, 226, 226);
+            margin-top: 5px;
+        }
+    }
+
+    .task_wrapper{
+        .task {
+            margin: 20px 20px;
+            display: grid;
+            grid-template-columns: 50px 1fr 120px 140px 40px;
+            grid-template-rows: auto;
+            grid-template-areas: 
+              ". . priority date ."
+              "color title title title menu"
+              "color text text text menu"
+              ". text text text .";
+              border: 1px solid black;
+              position: relative;
+        }
+
+        .task_completed {
+            margin: 20px 50px;
+            display: grid;
+            grid-template-columns: 50px 1fr 150px 150px 40px;
+            grid-template-rows: auto;
+            grid-template-areas: 
+              ". . priority date ."
+              "color title title title menu"
+              "color text text text menu"
+              ". text text text .";
+              border: 1px solid black;
+              position: relative;
+        }
+          
+        .color_task_wrapper {
+            margin-left: 5px;
+            grid-area: color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .color_task {
+                width: 30px;
+                height: 30px;
+            }
+        }
+          
+        .title_task {
+            font-size: 24px;
+            margin: 10px 5px 0 10px;
+            grid-area: title;
+        }
+          
+        .text_task {
+            font-size: 18px;
+            color: rgb(53, 53, 53);
+            margin: 10px 5px 10px 10px;
+            grid-area: text;
+        }
+          
+        .priority_task {
+            font-size: 14px;
+            grid-area: priority;
+        }
+          
+        .date_task {
+            color: rgb(133, 133, 133);
+            grid-area: date;
+        }
+          
+        .menu_task {
+            font-size: 30px;
+            color: rgb(53, 53, 53);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-area: menu;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .menu_task_panel {
+            text-align: center; 
+            width: 150px;
+            height: 65px;
+            position: absolute;
+            left: calc(100% - 180px);
+            //border-radius: (20px 20px 0 20px);
+            transform: scale(0);
+            background: gray;
+            border: 1px solid black;
+        }
+
+        .menu_task_panel_del {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .menu_task_panel_edit {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .menu_task_panel_compl {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .task_id {
+            transform: scale(0);
+        }
+    }
+}

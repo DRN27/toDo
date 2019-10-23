@@ -1,0 +1,314 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Varela Round', sans-serif;
+}
+
+.wrapper {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.btn {
+  font-size: 30px;
+}
+
+.hidden {
+  font-size: 0;
+}
+
+aside {
+  width: 17%;
+  min-width: 150px;
+  background: #081747;
+  color: #fff;
+}
+
+aside h2 {
+  font-family: 'Fascinate Inline', cursive;
+  font-size: 36px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+aside h2 i {
+  color: #c0cdf0;
+  padding-right: 10px;
+}
+
+aside p {
+  font-size: 22px;
+  padding: 10px 0 0 8%;
+}
+
+aside p i {
+  color: #c0cdf0;
+  padding-right: 10px;
+}
+
+main {
+  width: 100%;
+  background: whitesmoke;
+  overflow: auto;
+}
+
+main .header {
+  height: 104px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #fff;
+  padding: 0 50px;
+}
+
+main .title_section {
+  font-size: 22px;
+  margin: 20px 50px;
+}
+
+main .header_btn_wrapper {
+  font-size: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .sort_priority_task:hover {
+  cursor: pointer;
+}
+
+main .sort_date_task {
+  margin: 0 25px;
+}
+
+main .add_new_task {
+  color: #fff;
+  padding: 10px 50px;
+  border-radius: 35px;
+  background: #6f8de0;
+}
+
+main .add_new_task:hover {
+  cursor: pointer;
+}
+
+main .add_task_form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  height: 100vh;
+  width: 100vw;
+  background: rgba(29, 29, 29, 0.9);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .add_task_form_wrapper {
+  font-size: 20px;
+  text-align: center;
+  width: 600px;
+  height: 450px;
+  padding-top: 20px;
+  background: #fff;
+  border: 1px solid gray;
+}
+
+main .add_task_form_wrapper input[type="text"] {
+  font-size: 16px;
+  padding: 10px;
+  width: 250px;
+  height: 30px;
+  margin: 10px 0;
+}
+
+main .add_task_form_wrapper textarea {
+  font-size: 16px;
+  padding: 10px;
+  width: 250px;
+  height: 150px;
+  margin: 10px 0;
+  resize: none;
+}
+
+main .add_task_form_wrapper .button {
+  font-size: 18px;
+  line-height: 30px;
+  margin: 15px auto 0;
+  width: 100px;
+  height: 30px;
+  background: #e2e2e2;
+}
+
+main .add_task_form_wrapper #rewrite_task_btn {
+  margin-top: -20px;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+main .add_task_form_wrapper button {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 16px;
+  line-height: 30px;
+  height: 30px;
+  width: 100px;
+  background: #e2e2e2;
+  margin-top: 5px;
+}
+
+main .task_wrapper .task {
+  margin: 20px 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50px 1fr 120px 140px 40px;
+      grid-template-columns: 50px 1fr 120px 140px 40px;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+      grid-template-areas: ". . priority date ." "color title title title menu" "color text text text menu" ". text text text .";
+  border: 1px solid black;
+  position: relative;
+}
+
+main .task_wrapper .task_completed {
+  margin: 20px 50px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50px 1fr 150px 150px 40px;
+      grid-template-columns: 50px 1fr 150px 150px 40px;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+      grid-template-areas: ". . priority date ." "color title title title menu" "color text text text menu" ". text text text .";
+  border: 1px solid black;
+  position: relative;
+}
+
+main .task_wrapper .color_task_wrapper {
+  margin-left: 5px;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: color;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .task_wrapper .color_task_wrapper .color_task {
+  width: 30px;
+  height: 30px;
+}
+
+main .task_wrapper .title_task {
+  font-size: 24px;
+  margin: 10px 5px 0 10px;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-area: title;
+}
+
+main .task_wrapper .text_task {
+  font-size: 18px;
+  color: #353535;
+  margin: 10px 5px 10px 10px;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-area: text;
+}
+
+main .task_wrapper .priority_task {
+  font-size: 14px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: priority;
+}
+
+main .task_wrapper .date_task {
+  color: #858585;
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+  grid-area: date;
+}
+
+main .task_wrapper .menu_task {
+  font-size: 30px;
+  color: #353535;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 5;
+  grid-area: menu;
+}
+
+main .task_wrapper .menu_task:hover {
+  cursor: pointer;
+}
+
+main .task_wrapper .menu_task_panel {
+  text-align: center;
+  width: 150px;
+  height: 65px;
+  position: absolute;
+  left: calc(100% - 180px);
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  background: gray;
+  border: 1px solid black;
+}
+
+main .task_wrapper .menu_task_panel_del:hover {
+  cursor: pointer;
+}
+
+main .task_wrapper .menu_task_panel_edit:hover {
+  cursor: pointer;
+}
+
+main .task_wrapper .menu_task_panel_compl:hover {
+  cursor: pointer;
+}
+
+main .task_wrapper .task_id {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+/*# sourceMappingURL=main.css.map */
