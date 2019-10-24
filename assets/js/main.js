@@ -97,12 +97,16 @@ let toDo = {
         }
         toDo.saveTask();
     },
-    hideMenuTaskPanel: function() {
-        alert(123);
-       let obj = document.getElementsByClassName("menu_task_panel");
-       for (let i = 0; i < obj.length; i ++) {
-           obj[i].style.transform = "scale(0)";
-       }
+    hideMenuTaskPanel: function(target) {
+        console.log(target.target.className);
+        if (target.target.className == "menu_task_panel" || target.target.className == "fas fa-ellipsis-v" 
+            || target.target.className == "menu_task" ) {
+        } else {    
+            let obj = document.getElementsByClassName("menu_task_panel");
+            for (let i = 0; i < obj.length; i ++) {
+                obj[i].style.transform = "scale(0)";
+            }
+        } 
     },
     delTask: function(obj) {
         obj = obj.parentNode;
@@ -162,6 +166,9 @@ let toDo = {
     completeTask: function(obj) {
         obj = obj.parentNode;
         obj = obj.parentNode;
+        obj.children[3].innerHTML = "";
+        obj.children[4].innerHTML = "Completed";
+        obj.children[4].style.color = "green";
         let taskBlock = obj.innerHTML;
         obj.remove();
         let div = document.createElement("div");
@@ -257,3 +264,4 @@ window.onload =  function() {
     }
 };
 
+addEventListener("click", toDo.hideMenuTaskPanel);
