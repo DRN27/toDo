@@ -98,7 +98,6 @@ let toDo = {
         toDo.saveTask();
     },
     hideMenuTaskPanel: function(target) {
-        console.log(target.target.className);
         if (target.target.className == "menu_task_panel" || target.target.className == "fas fa-ellipsis-v" 
             || target.target.className == "menu_task" ) {
         } else {    
@@ -169,6 +168,9 @@ let toDo = {
         obj.children[3].innerHTML = "";
         obj.children[4].innerHTML = "Completed";
         obj.children[4].style.color = "green";
+        
+        obj.children[7].innerHTML = '<p class="menu_task_panel_del" onclick="toDo.delTask(this)">delete</p>';
+        obj.children[7].style.height = "21px";
         let taskBlock = obj.innerHTML;
         obj.remove();
         let div = document.createElement("div");
