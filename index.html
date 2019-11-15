@@ -4,70 +4,81 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 	<title>ToDo</title>
+	<link rel="stylesheet" href="assets/css/fonts.css" />
 	<link rel="stylesheet" href="assets/css/reset.css" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="stylesheet" href="assets/css/media.css" />
+
+	<script src="https://kit.fontawesome.com/bc68fc6055.js" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
-	<script src="https://kit.fontawesome.com/bc68fc6055.js" crossorigin="anonymous"></script>
 </head>
-<body id="body">
-	
+<body>
+
 	<div class="wrapper">
 		<aside>
-			<h2><i class="fab fa-opera"></i>ToDo</h2>
-			<p><i class="fas fa-home btn"></i>Home</p>
-			<p><i class="fas fa-cog btn"></i>Settings</p>
+			<div class="logo">
+				<div id="logo_img" class="logo_img">
+					<i class="fab fa-opera"></i>
+				</div>
+				<p id="logo_text" class="logo_text">ToDo</p>
+			</div>
+			<div class="menu_button">
+				<p class="menu_button--item"><i class="fas fa-home"></i><span>Home</span></p>
+				<p class="menu_button--item"><i class="fas fa-cog"></i><span>Settings</span></p>
+			</div>
 		</aside>
 		<main>
-			<div class="home">
-				<div class="header">
-					<div class="show_aside"><i class="fas fa-bars btn"></i></div>
-					<div class="header_btn_wrapper">
-						<div class="sort_priority_task" >
-							<i id="hight_prority" class="fas fa-sort-amount-down btn" onclick="toDo.priorityFilter(this)">
-							<i id="low_prority" class="fas fa-sort-amount-down-alt btn hidden" onclick="toDo.priorityFilter(this)"></i>
-							</i></div>
-						<!-- <div class="sort_date_task">
-							<i class="fas fa-sort-numeric-down btn"></i>
-						</div> -->
-						<div class="add_new_task" onclick="toDo.openFormAddTask()">Add ToDo</div>	
-					</div>
+			<div class="header">
+				<div class="header_left_block">
+					<i class="fas fa-bars btn tooltip" data-tooltip="hide sidebar" onclick="toDo.hideSidebar(this)"></i>
 				</div>
-				<div id="task_wrapper" class="task_wrapper">
-					<div id="active_task" class="active_task">
-						<h2 class="title_section">To Do <span id="active_task_counter">( 0 )</span></h2>
+				<div class="header_right_block">
+					<div class="sort_priority_task" >
+						<i id="hight_prority" class="fas fa-sort-amount-down btn tooltip" data-tooltip="sort from importent to unimportant" onclick="toDo.sortImportent()"></i>
+						<i id="low_prority" class="fas fa-sort-amount-down-alt btn hidden_btn tooltip" data-tooltip="sort from unimportant to important" onclick="toDo.sortUnimportent()"></i>
 					</div>
-					<div id="completed_task" class="completed_task">
-						<h2 class="title_section" >Completed <span id="completed_task_counter">( 0 )</span></h2>
+					<div class="sort_date_task">
+						<i id="old_tasks" class="fas fa-sort-numeric-down btn tooltip" data-tooltip="sort from old to new" onclick="toDo.sortByOldTasks()"></i>
+						<i id="new_tasks" class="fas fa-sort-numeric-down-alt btn hidden_btn tooltip" data-tooltip="sort from new to old" onclick="toDo.sortByNewTasks()"></i>
 					</div>
+					<div class="add_new_task" onclick="toDo.showFormAddTask()">Add ToDo</div>	
 				</div>
-				<div class="add_task_form" id="addTask">
-					<div class="add_task_form_wrapper">
-						<form action="">
+			</div>
+			<div class="main_content_wrapper">
+				<div class="form_add_task_wrapper" id="add_task_form">
+					<div class="form_add_task">
+						<h2>Add new task:</h2>
+						<form action="" class="add_task_form">
 							<p>Enter task title:</p>
-							<input type="text" id="title_task">
+							<input type="text" name="" id="title_task">
 							<p>Enter task:</p>
 							<textarea id="text_task"></textarea>
 							<p>Select task priority:</p>
-							<p>
+							<div class="radiobutton_wrapper">
 								<input type="radio" name="priority" value="Hight Priority" checked> Hight 
 								<input type="radio" name="priority" value="Medium Priority"> Medium 
 								<input type="radio" name="priority" value="Low Priority"> Low
-							</p>
-							<div class="button" id="add_task_btn"onclick="toDo.addTask()">Add task</div>
-							<div class="button" id="rewrite_task_btn" onclick="toDo.rewriteTask(this)">Edit task</div>
-							<button>Cancel</button>
+							</div>
+							<div class="form_button_wrapper">
+								<div class="button" id="add_task_btn" onclick="toDo.addTask()">Add task</div>
+								<div class="button" id="cancel_task_btn" onclick="toDo.hideFormAddTask()">Cancel</div>
+							</div>
 						</form>
 					</div>
 				</div>
+				<div class="task_wrapper">
+					<div class="active_task" id="active_task">
+						<h2 class="task_title">To Do <span id="active_task_counter">( 0 )</span></h2>
+					</div>
+					<div class="done_task" id="done_task">
+						<h2 class="task_title">Completed <span id="done_task_counter">( 0 )</span></h2>
+					</div>
+				</div>
 			</div>
-			<div class="settings">
-
-			</div>
+			
 		</main>
 	</div>
-		
 
 	<script src="assets/js/main.js"></script>
 	
