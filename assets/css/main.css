@@ -257,13 +257,72 @@ main .task_wrapper {
   margin: 0 25px;
 }
 
+main .task_wrapper .title_task_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .task_wrapper .title_task_wrapper .view_buttons {
+  margin-right: 50px;
+}
+
+main .task_wrapper .title_task_wrapper .view_buttons_item {
+  font-size: 25px;
+  padding-left: 10px;
+}
+
+main .task_wrapper .title_task_wrapper .view_buttons_item:hover {
+  cursor: pointer;
+}
+
+main .task_wrapper .grid_view {
+  -ms-flex-preferred-size: 48%;
+      flex-basis: 48%;
+}
+
 main .task_wrapper .task_title {
   margin: 15px 0;
 }
 
+main .task_wrapper .active_task {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+}
+
+main .task_wrapper .done_task {
+  min-height: 100px;
+  border: 2px solid #f3f3f3;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+}
+
 main .task_wrapper .completed_task {
-  margin: 20px 0;
-  padding: 10px;
+  margin: 5px 10px;
+  padding: 10px 10px 10px 25px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 120px 140px 30px;
@@ -271,14 +330,16 @@ main .task_wrapper .completed_task {
   -ms-grid-rows: auto;
       grid-template-rows: auto;
       grid-template-areas: ". priority date menu" "title title title menu" "text text text menu";
-  border: 2px solid black;
+  border: 2px solid #e6e6e6;
   border-radius: 8px;
   position: relative;
+  background: #fff;
+  width: 100%;
 }
 
 main .task_wrapper .task {
-  margin: 20px 0;
-  padding: 10px;
+  margin: 5px 10px;
+  padding: 10px 10px 10px 25px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 120px 140px 30px;
@@ -286,9 +347,11 @@ main .task_wrapper .task {
   -ms-grid-rows: auto;
       grid-template-rows: auto;
       grid-template-areas: ". priority date menu" "title title title menu" "text text text menu";
-  border: 2px solid black;
+  border: 2px solid #e6e6e6;
   border-radius: 8px;
   position: relative;
+  background: #fff;
+  width: 100%;
 }
 
 main .task_wrapper .title_task {

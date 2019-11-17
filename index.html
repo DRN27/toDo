@@ -68,11 +68,25 @@
 					</div>
 				</div>
 				<div class="task_wrapper">
-					<div class="active_task" id="active_task">
-						<h2 class="task_title">To Do <span id="active_task_counter">( 0 )</span></h2>
+					<div class="active_task_wrapper">
+						<div class="title_task_wrapper">
+							<h2 class="task_title">To Do 
+							<span id="active_task_counter">( 0 )</span>
+						</h2>
+						<div class="view_buttons">
+							<i class="fas fa-th-large view_buttons_item tooltip" data-tooltip="grid view" onclick="toDo.gridView()"></i>
+							<i class="fas fa-th-list view_buttons_item tooltip" data-tooltip="list view" onclick="toDo.listView()"></i>
+						</div>
+						</div>
+						<div class="active_task" id="active_task">
+
+						</div>
 					</div>
-					<div class="done_task" id="done_task">
+					<div class="done_task_wrapper" >
 						<h2 class="task_title">Completed <span id="done_task_counter">( 0 )</span></h2>
+						<div class="done_task" id="done_task">
+
+						</div>
 					</div>
 				</div>
 			</div>

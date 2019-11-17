@@ -196,16 +196,45 @@ main {
     .task_wrapper {
         font-size: 20px;
         margin: 0 25px;
+        .title_task_wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .view_buttons {
+                margin-right: 50px;
+                &_item {
+                    font-size: 25px;
+                    padding-left: 10px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }   
+        }
+        .grid_view {
+            flex-basis: 48%;
+        }
         .task_title {
-            margin: 15px 0;;
+            margin: 15px 0;
         }
         .active_task {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-content: flex-start;
         }
         .done_task {
+            min-height: 100px;
+            border: 2px solid rgb(243, 243, 243);
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-content: flex-start;
         }
         .completed_task {
-            margin: 20px 0;
-            padding: 10px;
+            margin: 5px 10px;
+            padding: 10px 10px 10px 25px;
             display: grid;
             grid-template-columns: 1fr 120px 140px 30px;
             grid-template-rows: auto;
@@ -213,13 +242,15 @@ main {
               ". priority date menu"
               "title title title menu"
               "text text text menu";
-            border: 2px solid black;
+            border: 2px solid rgb(230, 230, 230);
             border-radius: 8px;
             position: relative;
+            background: #fff;
+            width: 100%;
         }
         .task {
-            margin: 20px 0;
-            padding: 10px;
+            margin: 5px 10px;
+            padding: 10px 10px 10px 25px;
             display: grid;
             grid-template-columns: 1fr 120px 140px 30px;
             grid-template-rows: auto;
@@ -227,35 +258,33 @@ main {
               ". priority date menu"
               "title title title menu"
               "text text text menu";
-            border: 2px solid black;
+            border: 2px solid rgb(230, 230, 230);
             border-radius: 8px;
             position: relative;
+            background: #fff;
+            width: 100%;
         }
         .title_task {
             font-size: 24px;
             margin: 5px 0;
             grid-area: title;
-        }
-          
+        }      
         .text_task {
             font-size: 18px;
             color: rgb(53, 53, 53);
             margin: 5px 0;
             grid-area: text;
             overflow: scroll;
-        }
-          
+        }      
         .priority_task {
             font-size: 14px;
             grid-area: priority;
-        }
-          
+        }      
         .date_task {
             font-size: 14px;
             color: rgb(133, 133, 133);
             grid-area: date;
-        }
-          
+        }      
         .menu_task {
             font-size: 20px;
             color: rgb(53, 53, 53);
@@ -271,7 +300,6 @@ main {
                 transform: scale(1.5);
             }
         }
-
         .menu_task_panel {
             color: #fff;
             display: flex;
@@ -295,25 +323,21 @@ main {
                 }
             }
         }
-
         .menu_task_panel_del {
             &:hover {
                 cursor: pointer;
             }
         }
-
         .menu_task_panel_edit {
             &:hover {
                 cursor: pointer;
             }
         }
-
         .menu_task_panel_compl {
             &:hover {
                 cursor: pointer;
             }
         }
-
         .task_id {
             display: none;
         }

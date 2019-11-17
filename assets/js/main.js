@@ -1,6 +1,7 @@
 'use strict';
 let toDo = {
     currentObj: null,
+    // gridView: false,
     hideSidebar(currnetElem) {
         const aside = document.querySelector('aside');
         aside.style.width = '75px';
@@ -74,6 +75,7 @@ let toDo = {
         } else {
             const div = document.createElement("div");
             div.className = "task"; 
+            div.setAttribute('draggable','true');
             div.innerHTML = `<h2 class="title_task">${tittle}</h2> 
                             <p class="text_task">${task}</p>
                             <p class="priority_task" style="color:${color}">${priority}</p>
@@ -89,6 +91,7 @@ let toDo = {
             toDo.hideFormAddTask();
             toDo.saveActiveTask();
             toDo.counterTask();
+            toDo.dragAndDrop();
         }
     },
     saveActiveTask() {
@@ -105,6 +108,7 @@ let toDo = {
             for (let i = 0; i < arrayOfActiveTasks.length; i ++) {
                 const div = document.createElement("div");
                 div.className = "task"; 
+                div.setAttribute('draggable','true');
                 div.innerHTML = arrayOfActiveTasks[i];
                 document.getElementById("active_task").append(div);
             }
@@ -216,7 +220,6 @@ let toDo = {
         obj.children[6].innerHTML = '<p class="menu_task_panel_del" onclick="toDo.delTask(this)">delete</p>';
 
         const completedTask = obj.innerHTML;
-        console.log(completedTask);
         obj.remove();
         const div = document.createElement("div");
         div.className = "completed_task"; 
@@ -386,16 +389,88 @@ let toDo = {
             document.getElementById("active_task").append(div);
         });
     },
+    dragAndDrop() {
+        const container = document.querySelectorAll('#done_task');
+        const tasks = document.querySelectorAll('.task');
+        let currentTask = null;
+
+        tasks.forEach(function(element) {
+            element.addEventListener('dragstart', function() {
+                currentTask = element;
+                setTimeout(function() {;
+                    element.style.opacity = '0';
+                }, 0);
+            });
+
+            element.addEventListener('dragend', function() {
+                setTimeout(function() {
+                    element.style.opacity = '1';
+                    currentTask = null;
+                }, 0);
+            });
+            
+            container.forEach(function(element) {
+                element.addEventListener('dragover', function(elem) {
+                    elem.preventDefault();
+                    element.style.border = "2px solid green";
+                } );
+                element.addEventListener('dragenter', function(elem) {
+                    elem.preventDefault();
+                } );
+                element.addEventListener('dragleave', function(elem) {
+                    elem.preventDefault();
+                    element.style.borderColor = "rgb(243, 243, 243)";
+                } );
+                element.addEventListener('drop', function(elem) {
+                    currentTask.children[3].innerHTML = "";
+                    currentTask.children[2].innerHTML = "Completed";
+                    currentTask.children[2].style.color = "green";
+                    currentTask.children[6].style.transform = "scale(0)";
+                    currentTask.children[6].innerHTML = '<p class="menu_task_panel_del" onclick="toDo.delTask(this)">delete</p>';
+                    this.append(currentTask);
+                    currentTask.className = 'completed_task';
+                    element.style.borderColor = "rgb(243, 243, 243)";
+
+                    toDo.saveActiveTask();
+                    toDo.saveCompletedTask();
+                    const completedTask = document.querySelectorAll('.completed_task');
+                    completedTask.forEach( (element) => element.remove() );
+                    toDo.loadCompletedTask();
+                    toDo.counterTask();
+                    toDo.dragAndDrop();
+                } );
+            });
+        });
+    },
+    gridView() {
+        const activeTasks = document.querySelectorAll('.task');
+        activeTasks.forEach( (element) => element.classList.add('grid_view'));
+
+        const complitedTasks = document.querySelectorAll('.completed_task');
+        complitedTasks.forEach( (element) => element.classList.add('grid_view'));
+    },
+    listView() {
+        const activeTasks = document.querySelectorAll('.task');
+        activeTasks.forEach( (element) => element.classList.remove('grid_view'));
+
+        const complitedTasks = document.querySelectorAll('.completed_task');
+        complitedTasks.forEach( (element) => element.classList.remove('grid_view'));
+    },
 };
 
 
 window.onload =  function() {
     toDo.loadActiveTask();
     toDo.loadCompletedTask();
+    toDo.dragAndDrop();
 };
 
 document.addEventListener('keydown', function(event) {
     if (event.code == 'Escape')
-      toDo.hideFormAddTask();
+        toDo.hideFormAddTask();
   });
+
 document.addEventListener("click", toDo.hideTaskMenu);
+
+
+
