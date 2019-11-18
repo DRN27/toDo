@@ -35,6 +35,7 @@ let toDo = {
     showFormAddTask() {
         document.getElementById("title_task").value = '';
         document.getElementById("text_task").value = '';
+        document.querySelector('input[type = radio]').checked = true;
 
         add_task_btn.setAttribute('onclick','toDo.addTask()');
         add_task_btn.innerHTML = 'Add task';
@@ -188,6 +189,15 @@ let toDo = {
         obj = obj.parentNode;
         title_task.value = obj.children[0].innerHTML;
         text_task.value = obj.children[1].innerHTML;
+        const priority = obj.children[2].innerHTML;
+        const radioButton = document.querySelectorAll('input[type = radio]');
+        if (priority == "Hight Priority") {
+            radioButton[0].checked = true;
+        } else if (priority == "Medium Priority") {
+            radioButton[1].checked = true;
+        } else if (priority == "Low Priority") {
+            radioButton[2].checked = true;
+        }
         this.currentObj = obj;
     },
     rewriteTask() {
