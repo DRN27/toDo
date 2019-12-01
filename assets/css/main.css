@@ -182,11 +182,6 @@ main .task_wrapper .title_task_wrapper .view_buttons_item:hover {
   cursor: pointer;
 }
 
-main .task_wrapper .grid_view {
-  -ms-flex-preferred-size: 47%;
-      flex-basis: 47%;
-}
-
 main .task_wrapper .task_title {
   margin: 15px 0;
 }
@@ -197,9 +192,9 @@ main .task_wrapper .active_task {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -ms-flex-line-pack: start;
       align-content: flex-start;
 }
@@ -213,15 +208,15 @@ main .task_wrapper .done_task {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -ms-flex-line-pack: start;
       align-content: flex-start;
 }
 
 main .task_wrapper .completed_task {
-  margin: 5px 10px;
+  margin: 5px;
   padding: 10px 10px 10px 25px;
   display: -ms-grid;
   display: grid;
@@ -238,7 +233,7 @@ main .task_wrapper .completed_task {
 }
 
 main .task_wrapper .task {
-  margin: 5px 10px;
+  margin: 5px;
   padding: 10px 10px 10px 25px;
   display: -ms-grid;
   display: grid;
@@ -287,6 +282,10 @@ main .task_wrapper .date_task {
   -ms-grid-row: 1;
   -ms-grid-column: 3;
   grid-area: date;
+}
+
+main .task_wrapper .grid_view {
+  width: 48%;
 }
 
 main .task_wrapper .menu_task {
@@ -340,6 +339,8 @@ main .task_wrapper .menu_task_panel {
   -webkit-transform: scale(0);
           transform: scale(0);
   background: #91a0c9;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
 }
 
 main .task_wrapper .menu_task_panel p {
@@ -515,5 +516,45 @@ main .task_wrapper .task_id {
 
 .form_add_task .add_task_form .form_button_wrapper #cancel_task_btn:hover {
   border-color: #d60101;
+}
+
+.aside_min {
+  width: 75px;
+  min-width: 75px;
+}
+
+.logo_img_min {
+  display: none;
+}
+
+aside .logo_text_min {
+  font-size: 22px;
+  margin-left: 0;
+}
+
+.add_task_form_show {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  z-index: 10;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+main .task_wrapper .border {
+  border: 2px solid green;
+}
+
+.hide_block {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  z-index: -2;
+}
+
+.show_block {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  z-index: 1;
 }
 /*# sourceMappingURL=main.css.map */

@@ -140,17 +140,15 @@ main {
                 }
             }   
         }
-        .grid_view {
-            flex-basis: 47%;
-        }
         .task_title {
             margin: 15px 0;
         }
         .active_task {
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-content: flex-start;
+
         }
         .done_task {
             min-height: 100px;
@@ -158,11 +156,11 @@ main {
             border-radius: 8px;
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-content: flex-start;
         }
         .completed_task {
-            margin: 5px 10px;
+            margin: 5px;
             padding: 10px 10px 10px 25px;
             display: grid;
             grid-template-columns: 1fr 115px 0 25px;
@@ -178,7 +176,7 @@ main {
             width: 100%;
         }
         .task {
-            margin: 5px 10px;
+            margin: 5px;
             padding: 10px 10px 10px 25px;
             display: grid;
             grid-template-columns: 1fr 115px 125px 25px;
@@ -213,7 +211,10 @@ main {
             font-size: 14px;
             color: rgb(133, 133, 133);
             grid-area: date;
-        }      
+        }  
+        .grid_view {
+            width: 48%;
+        }    
         .menu_task {
             font-size: 20px;
             color: rgb(53, 53, 53);
@@ -242,6 +243,7 @@ main {
             border-radius: 8px;
             transform: scale(0); 
             background: $logo_color;
+            transition: all .5s ease;
             p {
                 text-align: center;
                 margin: 2% 0;
@@ -385,4 +387,36 @@ main {
             }
         }
     }
+}
+
+
+
+.aside_min {
+    width: 75px;
+    min-width: 75px;
+}
+.logo_img_min {
+    display: none;
+}
+aside .logo_text_min {
+    font-size: 22px;
+    margin-left: 0;
+}
+.add_task_form_show {
+    transform: scale(1);
+    z-index: 10;
+}
+.hidden {
+    opacity: 0;
+}
+main .task_wrapper .border {
+    border: 2px solid green;
+}
+.hide_block {
+    transform: scale(0);
+    z-index: -2;
+}
+.show_block {
+    transform: scale(1);
+    z-index: 1;
 }

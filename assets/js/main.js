@@ -4,14 +4,12 @@ let toDo = {
     isGridView: false,
     hideSidebar(currnetElem) {
         const aside = document.querySelector('aside');
-        aside.style.width = '75px';
-        aside.style.minWidth = '75px';
+        aside.classList.add('aside_min');
         currnetElem.setAttribute('onclick', 'toDo.showSidebar(this)');
         currnetElem.setAttribute('data-tooltip', 'show sidebar');
 
-        logo_img.hidden = true;
-        logo_text.style.fontSize = '22px';
-        logo_text.style.marginLeft = '0';
+        logo_img.classList.add('logo_img_min');
+        logo_text.classList.add('logo_text_min');
 
         const menuButtonText = 
             document.querySelectorAll('.menu_button > .menu_button--item > span');
@@ -19,14 +17,12 @@ let toDo = {
     },
     showSidebar(currnetElem) {
         const aside = document.querySelector('aside');
-        aside.style.width = '17%';
-        aside.style.minWidth = '160px';
+        aside.classList.remove('aside_min');
         currnetElem.setAttribute('onclick', 'toDo.hideSidebar(this)');
         currnetElem.setAttribute('data-tooltip', 'hide sidebar');
 
-        logo_img.hidden = false;
-        logo_text.style.fontSize = '26px';
-        logo_text.style.marginLeft = '20px';
+        logo_img.classList.remove('logo_img_min');
+        logo_text.classList.remove('logo_text_min');
 
         const menuButtonText = 
             document.querySelectorAll('.menu_button > .menu_button--item > span');
@@ -40,12 +36,10 @@ let toDo = {
         add_task_btn.setAttribute('onclick','toDo.addTask()');
         add_task_btn.innerHTML = 'Add task';
 
-        add_task_form.style.transform = 'scale(1)';
-        add_task_form.style.zIndex = '10';
+        add_task_form.classList.add('add_task_form_show');
     },
     hideFormAddTask() {
-        add_task_form.style.transform = 'scale(0)';
-        add_task_form.style.zIndex = '-10';
+        add_task_form.classList.remove('add_task_form_show');
     },
     addTask() {
         const tittle = document.getElementById("title_task").value;
@@ -76,7 +70,7 @@ let toDo = {
         } else {
             const div = document.createElement("div");
             div.className = "task"; 
-            if (toDo.isGridView == 'true') {
+            if (toDo.isGridView == true) {
                 div.classList.add('grid_view');
             }
             div.setAttribute('draggable','true');
@@ -112,7 +106,7 @@ let toDo = {
             for (let i = 0; i < arrayOfActiveTasks.length; i ++) {
                 const div = document.createElement("div");
                 div.className = "task"; 
-                if (toDo.isGridView == 'true') {
+                if (toDo.isGridView == true) {
                     div.classList.add('grid_view');
                 }
                 div.setAttribute('draggable','true');
@@ -136,7 +130,7 @@ let toDo = {
             for (let i = 0; i < arrayOfCompletedTasks.length; i ++) {
                 const div = document.createElement("div");
                 div.className = "completed_task"; 
-                if (toDo.isGridView == 'true') {
+                if (toDo.isGridView == true) {
                     div.classList.add('grid_view');
                 }
                 div.innerHTML = arrayOfCompletedTasks[i];
@@ -162,7 +156,6 @@ let toDo = {
                     item.style.transform = 'scale(0)';
                 });
                 obj.style.transform = "scale(1)";
-                obj.style.transition = 'all .5s ease';
         }
     },
     hideTaskMenu(event) {
@@ -240,7 +233,8 @@ let toDo = {
         obj.remove();
         const div = document.createElement("div");
         div.className = "completed_task"; 
-        if (toDo.isGridView == 'true') {
+        console.log(toDo.isGridView);
+        if (toDo.isGridView == true) {
             div.classList.add('grid_view');
         }
         div.innerHTML = completedTask;
@@ -430,53 +424,51 @@ let toDo = {
         const tasks = document.querySelectorAll('.task');
         let currentTask = null;
 
-        tasks.forEach(function(element) {
+        tasks.forEach( (element) => {
             element.addEventListener('dragstart', function() {
                 currentTask = element;
-                setTimeout(function() {;
-                    element.style.opacity = '0';
+                setTimeout(function() {
+                    element.classList.add('hidden');
                 }, 0);
             });
 
             element.addEventListener('dragend', function() {
                 setTimeout(function() {
-                    element.style.opacity = '1';
+                    element.classList.remove('hidden');
                     currentTask = null;
                 }, 0);
             });
             
-            container.forEach(function(element) {
+            container.forEach( (element) => {
                 element.addEventListener('dragover', function(elem) {
                     elem.preventDefault();
-                    element.style.border = "2px solid green";
+                    element.classList.add('border');
                 } );
                 element.addEventListener('dragenter', function(elem) {
                     elem.preventDefault();
                 } );
                 element.addEventListener('dragleave', function(elem) {
                     elem.preventDefault();
-                    element.style.borderColor = "rgb(243, 243, 243)";
+                    element.classList.remove('border');
                 } );
                 element.addEventListener('drop', function(elem) {
-                    currentTask.children[3].innerHTML = "";
-                    currentTask.children[2].innerHTML = "Completed";
-                    currentTask.children[2].style.color = "green";
-                    currentTask.children[6].style.transform = "scale(0)";
-                    currentTask.children[6].innerHTML = '<p class="menu_task_panel_del" onclick="toDo.delTask(this)">delete</p>';
-                    currentTask.className = 'completed_task';
-                    if (toDo.isGridView == 'true') {
-                        currentTask.classList.add('grid_view');
-                    }
-                    this.append(currentTask);
-                    element.style.borderColor = "rgb(243, 243, 243)";
+                    if (currentTask != null) { 
+                        currentTask.children[3].innerHTML = "";
+                        currentTask.children[2].innerHTML = "Completed";
+                        currentTask.children[2].style.color = "green";
+                        currentTask.children[6].style.transform = "scale(0)";
+                        currentTask.children[6].innerHTML = '<p class="menu_task_panel_del" onclick="toDo.delTask(this)">delete</p>';
+                        currentTask.className = 'completed_task';
+                        if (toDo.isGridView == true) {
+                            currentTask.classList.add('grid_view');
+                        }
+                        this.append(currentTask);
+                        element.classList.remove('border');
 
-                    toDo.saveActiveTask();
-                    toDo.saveCompletedTask();
-                    const completedTask = document.querySelectorAll('.completed_task');
-                    completedTask.forEach( (element) => element.remove() );
-                    toDo.loadCompletedTask();
-                    toDo.counterTask();
-                    toDo.dragAndDrop();
+                        toDo.saveActiveTask();
+                        toDo.saveCompletedTask();
+                        toDo.counterTask();
+                    }
                 } );
             });
         });
@@ -489,7 +481,7 @@ let toDo = {
         complitedTasks.forEach( (element) => element.classList.add('grid_view'));
 
         localStorage.setItem ("isGridView", true);
-
+        toDo.isGridView = true;
     },
     listView() {
         const activeTasks = document.querySelectorAll('.task');
@@ -499,28 +491,21 @@ let toDo = {
         complitedTasks.forEach( (element) => element.classList.remove('grid_view'));
 
         localStorage.setItem ("isGridView", false);
+        toDo.isGridView = false;
     },
     settings() {
         const block = document.querySelector('.settings');
-        block.style.transform = 'scale(1)';
-        block.style.zIndex = '1';
+        block.classList.add('show_block');
 
         const hiddenBlock = document.querySelector('.task_wrapper');
-        hiddenBlock.style.transform = 'scale(0)';
-        hiddenBlock.style.zIndex = '-2';
-
-        document.querySelector('.main_content_wrapper').style.overflow = 'hidden';
+        hiddenBlock.classList.add('hide_block');
     },
     home() {
         const hiddenBlock = document.querySelector('.settings');
-        hiddenBlock.style.transform = 'scale(0)';
-        hiddenBlock.style.zIndex = '-2';
+        hiddenBlock.classList.remove('show_block');
 
         const block = document.querySelector('.task_wrapper');
-        block.style.transform = 'scale(1)';
-        block.style.zIndex = '1';
-
-        document.querySelector('.main_content_wrapper').style.overflow = 'scroll';
+        block.classList.remove('hide_block');
     },
     colorTheme1() {
         document.querySelector('aside').style.background = 'rgb(11, 28, 83)';
@@ -532,17 +517,15 @@ let toDo = {
     },
 };
 
-
 window.onload =  function() {
     toDo.loadActiveTask();
     toDo.loadCompletedTask();
     toDo.dragAndDrop();
 
     toDo.isGridView = localStorage.getItem ("isGridView");
-    if (toDo.isGridView == 'true') {
+    if (toDo.isGridView === 'true') {
         toDo.gridView();
-    }
-        
+    }   
 };
 
 document.addEventListener('keydown', function(event) {
@@ -551,6 +534,3 @@ document.addEventListener('keydown', function(event) {
   });
 
 document.addEventListener("click", toDo.hideTaskMenu);
-
-
-

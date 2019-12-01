@@ -1,20 +1,80 @@
-/*==========  Desktop First Method  ==========*/
-/* Large Devices, Wide Screens */
-/* Medium Devices, Desktops */
-@media only screen and (max-width: 880px) {
-  .task {
-    background: pink;
-    font-size: 50px;
+@media only screen and (max-width: 885px) {
+  aside {
+    width: 75px;
+    min-width: 75px;
+  }
+  aside .logo_img {
+    display: none;
+  }
+  aside .logo_text {
+    font-size: 22px;
+    margin-left: 0;
+  }
+  aside .menu_button span{
+    display: none;
+  }
+  main .task_wrapper .task {
+    margin: 3px 0;
+    padding: 10px;
+    grid-template-columns: 1fr 115px 105px 15px;
+  }
+  main .task_wrapper .date_task {
+    font-size: 12px;
+  } 
+  main .task_wrapper .grid_view {
+    width: 50%;
   }
 }
 
-/* Small Devices, Tablets */
-/* Extra Small Devices, Phones */
-/* Custom, iPhone Retina */
-/*==========  Mobile First Method  ==========*/
-/* Custom, iPhone Retina */
-/* Extra Small Devices, Phones */
-/* Small Devices, Tablets */
-/* Medium Devices, Desktops */
-/* Large Devices, Wide Screens */
-/*# sourceMappingURL=media.css.map */
+@media only screen and (max-width: 675px) {
+  aside {
+    display: none;
+  }
+  main .header {
+    padding: 0 30px;
+  }
+  main .add_new_task {
+    padding: 15px 30px;
+  }
+  main .header_left_block {
+    display: none;
+  }
+  main .task_wrapper {
+    margin: 0 5px;
+  }
+  main .task_wrapper .task {
+    margin: 3px 0;
+    padding: 10px;
+    grid-template-columns: 1fr 115px 105px 15px;
+  }
+  main .task_wrapper .task_title{
+    margin-left: 15px;
+  }
+  main .task_wrapper .completed_task {
+    margin: 10px 0;
+  }
+  main .header_right_block {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  main .header_right_block div{
+    margin-left: 6%;
+  }
+  main .task_wrapper .date_task {
+    font-size: 12px;
+  } 
+  .form_add_task {
+    width: 400px;
+  }
+}
+@media only screen and (max-width: 545px) {
+  main .view_buttons {
+    display: none;
+  }
+  main .task_wrapper .grid_view {
+    width: 100%;
+  }    
+  .form_add_task {
+    width: 310px;
+  }
+}
