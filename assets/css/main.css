@@ -230,6 +230,7 @@ main .task_wrapper .completed_task {
   position: relative;
   background: #fff;
   width: 100%;
+  overflow: hidden;
 }
 
 main .task_wrapper .task {
@@ -247,6 +248,7 @@ main .task_wrapper .task {
   position: relative;
   background: #fff;
   width: 100%;
+  overflow: hidden;
 }
 
 main .task_wrapper .title_task {
