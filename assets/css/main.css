@@ -258,6 +258,7 @@ main .task_wrapper .title_task {
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-area: title;
+  padding: 2px;
 }
 
 main .task_wrapper .text_task {
@@ -268,7 +269,8 @@ main .task_wrapper .text_task {
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-area: text;
-  overflow: scroll;
+  overflow: hidden;
+  padding: 2px;
 }
 
 main .task_wrapper .priority_task {
